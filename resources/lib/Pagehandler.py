@@ -27,7 +27,7 @@ class Pagehandler(object):
 	opener = None
 	cj = None
 	basic_url = 'http://afltv.afl.com.au/'
-	cookiefile = '/cookie/cookiefile.txt'
+	cookiefile = '/cookie/cookiefile.lwp'
 
 	def __init__(self):
 		if(not Pagehandler.opener):
