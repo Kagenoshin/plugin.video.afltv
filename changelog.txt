@@ -1,0 +1,9 @@
+[B]Version 0.1[/B]
+- Initial version of Addon
+
+[B]Credits[/B]
+Created by Ivo Buff (Kagenoshin)
+Thanks to Andy Botting (andybz) for his plugin 'AFL Video':
+-http://www.andybotting.com/afl-plugins-for-xbmc
+And Tony Malloy for his photo 'The MCG From On High':
+-http://www.flickr.com/photos/awmalloy/2813735672/

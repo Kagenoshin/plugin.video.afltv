@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="USERNAME" type="text" label="10001" default="username" />
+	<setting id="PASSWORD" type="text" label="10002" option="hidden"  enable="!eq(-1,)" default="password" />
+</settings>
