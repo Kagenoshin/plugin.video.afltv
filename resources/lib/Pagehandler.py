@@ -19,7 +19,7 @@
 #    along with AFLTV.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import urllib,urllib2,re, cookielib
+import urllib,urllib2,re, cookielib, os
 import xbmcgui, xbmcplugin, xbmcaddon, xbmc
 
 
@@ -27,16 +27,19 @@ class Pagehandler(object):
 	opener = None
 	cj = None
 	basic_url = 'http://afltv.afl.com.au/'
-	cookiefile = '/cookie/cookiefile.lwp'
+	cookiefile = '/cookiefile.lwp'
 
 	def __init__(self):
 		if(not Pagehandler.opener):
 			__addon__ = xbmcaddon.Addon()
-			path = __addon__.getAddonInfo('path').decode('utf-8')
+			path = __addon__.getAddonInfo('profile').decode('utf-8')
 			Pagehandler.cookiefile = path + Pagehandler.cookiefile
 			Pagehandler.cookiefile = xbmc.translatePath(Pagehandler.cookiefile)
 			Pagehandler.cj = cookielib.LWPCookieJar(Pagehandler.cookiefile)
-			Pagehandler.cj.load(Pagehandler.cookiefile)
+			if(os.path.isfile(Pagehandler.cookiefile)): #load only if there is a file
+				Pagehandler.cj.load(Pagehandler.cookiefile)
+			else: #create an empty file
+				open(Pagehandler.cookiefile, "w").close()
 			Pagehandler.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(Pagehandler.cj))
 			Pagehandler.opener.addheaders = [('User-agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3')]
 			Pagehandler.opener.open(Pagehandler.basic_url)
